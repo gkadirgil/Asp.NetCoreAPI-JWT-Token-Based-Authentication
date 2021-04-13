@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "L6d8sSDZSQ+EkcGV55W9Et/K8IlL8/ZH9jInBML1vh8D+M9jPYqwCdpHNc4/7RWno43q/99AvJfQnj/HDYFwEQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gkadi\\source\\repos\\AuthServer\\MiniApp2.API\\MiniApp2.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gkadi\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\gkadi\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\gkadi\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\gkadi\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\gkadi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\gkadi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
