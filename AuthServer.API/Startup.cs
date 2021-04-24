@@ -5,6 +5,7 @@ using AuthServer.Core.Services;
 using AuthServer.Core.UnitOfWork;
 using AuthServer.Data;
 using AuthServer.Service.Services;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +16,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SharedLibrary.Configurations;
+using SharedLibrary.Extensions;
+using SharedLibrary.Services;
 using System;
 using System.Collections.Generic;
 
@@ -37,11 +40,11 @@ namespace AuthServer.API
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ITokenService,TokenService>();
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
-            services.AddScoped(typeof(IServiceGeneric<,>),typeof(ServiceGeneric<,>));
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IServiceGeneric<,>), typeof(ServiceGeneric<,>));
 
             // SQL Server
 
@@ -76,15 +79,15 @@ namespace AuthServer.API
                  var tokenOptions = Configuration.GetSection("TokenOption").Get<CustomTokenOptions>();
                  options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
                  {
-                     ValidIssuer=tokenOptions.Issuer,
-                     ValidAudience=tokenOptions.Audience[0],
-                     IssuerSigningKey=SignService.GetSymmetricSecurityKeyc(tokenOptions.SecurityKey),
+                     ValidIssuer = tokenOptions.Issuer,
+                     ValidAudience = tokenOptions.Audience[0],
+                     IssuerSigningKey = SignService.GetSymmetricSecurityKeyc(tokenOptions.SecurityKey),
 
-                     ValidateIssuerSigningKey=true,
-                     ValidateAudience=true,
-                     ValidateIssuer=true,
-                     ValidateLifetime=true,
-                     ClockSkew=TimeSpan.Zero
+                     ValidateIssuerSigningKey = true,
+                     ValidateAudience = true,
+                     ValidateIssuer = true,
+                     ValidateLifetime = true,
+                     ClockSkew = TimeSpan.Zero
 
                  };
              });
@@ -94,8 +97,15 @@ namespace AuthServer.API
             services.Configure<CustomTokenOptions>(Configuration.GetSection("TokenOption"));
             services.Configure<List<Client>>(Configuration.GetSection("Clients"));
 
+            
 
             services.AddControllers();
+            services.AddControllersWithViews().AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblyContaining<Startup>();
+            });
+
+            services.UseCustomValidationResponse();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AuthServer.API", Version = "v1" });
@@ -112,9 +122,13 @@ namespace AuthServer.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AuthServer.API v1"));
             }
 
+            app.UseCustomException();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

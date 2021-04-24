@@ -29,3 +29,10 @@ C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\obj\Debug\net5.0\MiniApp1.AP
 C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\obj\Debug\net5.0\MiniApp1.API.genruntimeconfig.cache
 C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\bin\Debug\net5.0\SharedLibrary.dll
 C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\bin\Debug\net5.0\SharedLibrary.pdb
+C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\gkadi\source\repos\AuthServer\MiniApp1.API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
